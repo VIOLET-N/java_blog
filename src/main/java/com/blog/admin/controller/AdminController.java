@@ -24,8 +24,19 @@ public class AdminController {
         return service.selectById(adminId);
     }
 
+    /**
+     * 登录
+     * 要求:
+     * 登录失败->判断是 username 错误还是 password 错误
+     * 登录成功 -> 返回 admin 对象给前台
+     * 实现该接口
+     * @param admin 用户名和密码
+     * @return
+     */
     @RequestMapping("/login")
     public Admin login(Admin admin){
+
+
         return null;
     }
 }

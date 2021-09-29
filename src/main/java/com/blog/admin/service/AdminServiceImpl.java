@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 public class AdminServiceImpl implements AdminService {
 
@@ -33,11 +34,11 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin login(Admin admin) {
-        return null;
+        return dao.login(admin);
     }
 
     @Override
     public int delete(Admin admin) {
-        return 0;
+        return dao.delete(admin);
     }
 }
