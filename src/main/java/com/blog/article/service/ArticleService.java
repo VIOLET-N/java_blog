@@ -2,6 +2,10 @@ package com.blog.article.service;
 
 import com.blog.article.entity.Article;
 
+import java.util.List;
+
 public interface ArticleService {
-    public int create(Article article);
+    public void create(Article article);
+    public Article selectById(Article article);
+    public List<Article> selectAllByAdminId(Article article);
 }

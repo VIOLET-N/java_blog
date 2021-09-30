@@ -6,6 +6,8 @@ import com.blog.utils.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
@@ -13,10 +15,20 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public int create(Article article) {
+    public void create(Article article) {
         String dateNow = DateFormat.getNewDate();
         article.setCreateTime(dateNow);
         article.setUpdateTime(dateNow);
-        return dao.create(article);
+        dao.create(article);
+    }
+
+    @Override
+    public Article selectById(Article article) {
+        return dao.selectById(article);
+    }
+
+    @Override
+    public List<Article> selectAllByAdminId(Article article) {
+        return dao.selectAllByAdminId(article);
     }
 }

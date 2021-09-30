@@ -8,4 +8,20 @@
         values
             (#{title}, #{body}, #{articleState}, #{createTime}, #{updateTime}, #{adminId});
     </insert>
+
+    <resultMap id="article_admin" type="com.blog.article.entity.Article" autoMapping="true">
+        <id property="articleId" column="article_id" />
+        <association property="admin" autoMapping="true" javaType="com.blog.admin.entity.Admin">
+            <id property="adminId" column="admin_id" />
+        </association>
+    </resultMap>
+
+    <select id="selectById" resultMap="article_admin">
+        select article.*, a.*
+        from article inner join admin a on article.admin_id = a.admin_id
+    </select>
+
+    <select id="selectAllByAdminId" resultType="com.blog.article.entity.Article">
+        select * from article where article_id=#{articleId}
+    </select>
 </mapper>
