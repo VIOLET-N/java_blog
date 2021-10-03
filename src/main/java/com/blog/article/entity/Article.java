@@ -20,6 +20,7 @@ public class Article {
     private String createTime;           // 创建时间
     private String updateTime;          // 修改时间
     private Integer adminId;            // 作者 Id
+    private Integer groupId;            // 组 Id
 
     private Admin admin;        // 文章发布者 (文章) N -> 1 (作者)
 }

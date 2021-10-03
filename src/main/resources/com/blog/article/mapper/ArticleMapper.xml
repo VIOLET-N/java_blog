@@ -4,9 +4,9 @@
 <mapper namespace="com.blog.article.mapper.ArticleMapper">
     <insert id="create" useGeneratedKeys="true" keyProperty="articleId">
         insert into
-            article (title, body, article_state, create_time, update_time, admin_id)
+            article (title, body, article_state, create_time, update_time, admin_id, group_id)
         values
-            (#{title}, #{body}, #{articleState}, #{createTime}, #{updateTime}, #{adminId});
+            (#{title}, #{body}, #{articleState}, #{createTime}, #{updateTime}, #{adminId}, #{groupId});
     </insert>
 
     <resultMap id="article_admin" type="com.blog.article.entity.Article" autoMapping="true">
