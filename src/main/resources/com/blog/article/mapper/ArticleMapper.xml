@@ -24,4 +24,19 @@
     <select id="selectAllByAdminId" resultType="com.blog.article.entity.Article">
         select * from article where article_id=#{articleId}
     </select>
+
+    <update id="update">
+        update article
+        set
+            title=#{title},
+            body=#{body},
+            article_state=#{articleState},
+            update_time=#{updateTime}
+        where
+            article_id=#{articleId}
+    </update>
+
+    <delete id="deleteById">
+        delete from article where article_id=#{articleId}
+    </delete>
 </mapper>

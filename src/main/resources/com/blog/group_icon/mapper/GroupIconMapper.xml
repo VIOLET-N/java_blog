@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.group_icon.mapper.GroupIconMapper">
+    <insert id="create" keyProperty="iconId" useGeneratedKeys="true">
+        insert into group_icon (url, create_time, update_time)
+        values (#{url}, #{createTime}, #{updateTime});
+    </insert>
+
+    <select id="selectById" resultType="com.blog.group_icon.entity.GroupIcon">
+        select *
+        from group_icon
+        where icon_id=#{iconId};
+    </select>
+
+    <update id="updateById">
+        update group_icon
+        set url        = #{url},
+            update_time=#{updateTime}
+        where icon_id=#{iconId};
+    </update>
+
+    <delete id="deleteById">
+        delete from group_icon where icon_id=#{iconId}
+    </delete>
+</mapper>
