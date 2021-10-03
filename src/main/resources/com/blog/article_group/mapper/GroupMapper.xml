@@ -3,16 +3,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.article_group.mapper.GroupMapper">
     <insert id="create" keyProperty="articleGroupId" useGeneratedKeys="true">
-        insert into article_group (title, update_time)
-        values (#{title}, #{updateTime});
+        insert into article_group (title, create_time, update_time, icon_id, lgg_id)
+        values (#{title}, #{createTime}, #{updateTime}, #{iconId}, #{lggId});
     </insert>
 
-    <select id="selectAll" resultType="com.blog.article_group.entity.ArticleGroup">
-        select * from article_group
+    <resultMap id="selectIconAndLgg" type="com.blog.article_group.entity.ArticleGroup" autoMapping="true">
+        <id property="articleGroupId" column="article_group_id" />
+        <association property="groupIcon" javaType="com.blog.group_icon.entity.GroupIcon" autoMapping="true">
+            <id property="iconId" column="icon_id"/>
+        </association>
+        <association property="language" javaType="com.blog.language.entity.Language" autoMapping="true">
+            <id property="lggId" column="lgg_id" />
+        </association>
+    </resultMap>
+
+    <select id="selectAll" resultMap="selectIconAndLgg">
+        select article_group.*, gi.*, l.*
+        from article_group, article_group gi, language l
+        where article_group.icon_id = gi.icon_id
+          and article_group.lgg_id = l.lgg_id
     </select>
 
     <update id="update">
-        update article_group set title=#{title}, update_time=#{updateTime} where article_group_id=#{articleGroupId}
+        update article_group
+        set title      = #{title},
+            update_time=#{updateTime}
+        where article_group_id=#{articleGroupId};
     </update>
 
     <delete id="delete">

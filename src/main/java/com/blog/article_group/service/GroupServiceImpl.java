@@ -19,6 +19,7 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void create(ArticleGroup group) {
         group.setUpdateTime(DateFormat.getNewDate());
+        group.setCreateTime(DateFormat.getNewDate());
         dao.create(group);
     }
 
