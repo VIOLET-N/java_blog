@@ -2,6 +2,7 @@ package com.blog.admin.service;
 
 import com.blog.admin.entity.Admin;
 import com.blog.admin.mapper.AdminMapper;
+import com.blog.utils.PowerState;
 import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class AdminServiceImpl implements AdminService {
     @Transactional
     @Override
     public int createAdmin(Admin admin) {
+        admin.setPower(PowerState.USER);
         return dao.createAdmin(admin);
     }
 
