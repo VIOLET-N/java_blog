@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.comment.mapper.CommentMapper">
+    <insert id="create" keyProperty="commentId" useGeneratedKeys="true">
+        insert into comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            body,article_id,admin_id,
+            <if test="replyTo != null and replyTo != ''">
+                reply_to,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{body},#{articleId},#{adminId},
+            <if test="replyTo != null and replyTo != ''">
+                #{replyTo}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectByArticleId" resultType="com.blog.comment.entity.Comment">
+        select *
+        from comment
+        where article_id=#{articleId}
+        order by create_time;
+    </select>
+</mapper>
