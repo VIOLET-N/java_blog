@@ -19,9 +19,9 @@
 
     <select id="selectAll" resultMap="selectIconAndLgg">
         select article_group.*, gi.*, l.*
-        from article_group, article_group gi, language l
-        where article_group.icon_id = gi.icon_id
-          and article_group.lgg_id = l.lgg_id
+        from article_group
+            inner join group_icon gi on article_group.icon_id = gi.icon_id
+            inner join language l on article_group.lgg_id = l.lgg_id
     </select>
 
     <update id="update">
@@ -34,4 +34,6 @@
     <delete id="delete">
         delete from article_group where article_group_id=#{articleGroupId}
     </delete>
+
+<!--    selectByIdAndAllArticle-->
 </mapper>

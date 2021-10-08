@@ -9,7 +9,7 @@
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-search"></i>
-                <router-link to="">Search</router-link>
+                <router-link to="/search">Search</router-link>
               </div>
             </li>
             <li class="b-button">
@@ -20,39 +20,58 @@
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-bars" aria-hidden="true"></i>
-                <router-link to="">Project</router-link>
+                <router-link to="/project-list">Project</router-link>
               </div>
               
             </li>
             <li class="b-button">
               <div class="button-content">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-                <router-link to="">Programming</router-link>
+                <i class="fa fa-laptop" aria-hidden="true"></i>
+                <router-link to="/language">Language</router-link>
               </div>
 
             </li>
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-link" aria-hidden="true"></i>
-                <router-link to="">Link</router-link>
+                <router-link to="/">Link</router-link>
               </div>
 
             </li>
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-heart" aria-hidden="true"></i>
-                <router-link to="">About</router-link>
+                <router-link to="/">About</router-link>
               </div>
 
             </li>
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-github" aria-hidden="true"></i>
-                <router-link to="">GitHub</router-link>
+                <router-link to="/">GitHub</router-link>
               </div>
-
             </li>
           </ul>
+          <div class="userInfo">
+            <div class="icon">
+              <img src="../assets/005.jpg" alt="">
+              <ul class="menu-ul">
+                <li></li>
+                <li class="menu-li">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  Writing
+                </li>
+                <li @click="addProject" class="menu-li">
+                  <i class="fa fa-plus" aria-hidden="true"></i> 
+                  Add Project
+                </li>
+                <li class="menu-li">
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+                  Setting
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
     </div>
     <router-view />
@@ -60,10 +79,15 @@
 </template>
 
 <script>
+
   export default {
     name: "Home",
+    methods: {
+      addProject(){
+        this.$router.push("/add-project");
+      }
+    }
   };
-  
 </script>
 
 <style scoped>
@@ -75,6 +99,7 @@
   /* position: absolute; */
   /* top: 50px; */
   width: 100%;
+  /* position: relative; */
 }
 
 .b-center {
@@ -83,9 +108,14 @@
   width: 95%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
+  line-height: 60px;
   /* position: fixed; */
   /* position: relative; */
+}
+
+.b-center .b-left{
+  width: 120px;
 }
 
 .b-center .title {
@@ -101,18 +131,21 @@
   width: 90%;
   justify-content: right;
   font-size: 15px;
+  /* line-height: 60px; */
+  margin-top: 15px;
 }
 
-.b-center .b-right li {
+.b-center .b-right .b-button {
   margin-right: 1px;
+  /* line-height: 60px; */
 }
 
-.b-center .b-right li i {
+.b-center .b-right .b-button i {
   padding-right: 5px;
   color: #ced6e0;
 }
 
-.b-center .b-right li a {
+.b-center .b-right .b-button a {
   text-decoration: none;
   color: #ced6e0;
 }
@@ -127,6 +160,7 @@
   cursor: pointer;
   text-align: center;
   line-height: 30px;
+  /* margin-top: 5px; */
 }
 
 .b-button::before {
@@ -172,5 +206,75 @@
   top: 0;
   z-index: 1;
   background: #2c3a47;
+  /* line-height: 60px; */
+  /* margin-top: 5px; */
+}
+
+/* ------------------------------ */
+/* avatar user info */
+.userInfo{
+  z-index: 2;
+}
+
+
+.userInfo .icon{
+  /* background: turquoise; */
+ width: 120px;
+ margin-right: -40px;
+}
+
+
+.userInfo .icon img{
+  width: 55px;
+  cursor: pointer;
+  /* height: 55px; */
+  margin-top: 3px;
+  border-radius: 50%;
+  /* padding: auto; */
+  margin-left: 33px;
+  /* margin: 0 auto; */
+  /* z-index: 5; */
+}
+
+.userInfo .icon img:hover ~ ul li{
+  /* width: 60px; */
+  /* height: 70px; */
+  /* display: block; */
+  height: 40px;
+
+}
+
+.userInfo .icon ul{
+  list-style: none;
+  /* background: violet; */
+  /* top: -20px; */
+  margin-top: -62px;
+
+}
+
+.userInfo .icon ul:hover li{
+  height: 40px;
+}
+
+.userInfo .icon ul li{
+  height: 0px;
+  width: 120px;
+  line-height: 40px;
+  padding-left: 18px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.userInfo .icon ul .menu-li{
+  background-color: #2c3a47;
+  color: #ced6e0;
+  cursor: pointer;
+  /* z-index: 3; */
+}
+
+.userInfo .icon ul li:hover{
+  color: #2c3a47;
+  background: #ced6e0;
+
 }
 </style>

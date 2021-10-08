@@ -11,4 +11,5 @@ public interface GroupMapper {
     public List<ArticleGroup> selectAll();
     public int update(ArticleGroup group);
     public int delete(ArticleGroup group);
+    public ArticleGroup selectByIdAndAllArticle(ArticleGroup articleGroup);
 }

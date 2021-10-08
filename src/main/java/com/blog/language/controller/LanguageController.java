@@ -15,9 +15,11 @@ public class LanguageController {
     private LanguageService service;
 
     @RequestMapping("/create")
-    public int create(Language language){
-        service.create(language);
-        return language.getLggId();
+    public Language create(Language language){
+        Language lgg = service.create(language);
+//        return language.getLggId();
+        lgg.setLggId(language.getLggId());
+        return lgg;
     }
 
     @RequestMapping("/update-id")

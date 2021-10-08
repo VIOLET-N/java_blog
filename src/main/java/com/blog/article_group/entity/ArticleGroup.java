@@ -22,5 +22,6 @@ public class ArticleGroup {
 
     private GroupIcon groupIcon;
     private Language language;
+    private List<Article> articleList;
 //    private List<Article> articleList; // 所有文章
 }

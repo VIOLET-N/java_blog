@@ -14,10 +14,11 @@ public class LanguageServiceImpl implements LanguageService {
     private LanguageMapper dao;
 
     @Override
-    public void create(Language language) {
+    public Language create(Language language) {
         language.setCreateTime(DateFormat.getNewDate());
         language.setUpdateTime(DateFormat.getNewDate());
         dao.create(language);
+        return language;
     }
 
     @Override
