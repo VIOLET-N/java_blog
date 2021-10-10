@@ -20,6 +20,10 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import VMEditor from '@kangc/v-md-editor/lib/codemirror-editor'
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css'
 
+// 显示配置
+import VMPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+
 
 import Prism from 'prismjs';
 
@@ -45,11 +49,32 @@ import 'codemirror/addon/scroll/simplescrollbars.css';
 // style
 import 'codemirror/lib/codemirror.css';
 
+// 快捷复制代码
+import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
+import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
+
+// 代码片段行号
+import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
+
+// 流程图
+import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn';
+import '@kangc/v-md-editor/lib/plugins/mermaid/mermaid.css';
+
 VMEditor.Codemirror = Codemirror;
+
+VMEditor.use(createCopyCodePlugin());
+VMEditor.use(createLineNumbertPlugin());
+VMEditor.use(createMermaidPlugin());
 
 VMEditor.use(vueperssTheme, {
   Prism
 });
+
+VMPreview.use(vueperssTheme, {
+  Prism
+});
+
+Vue.use(VMPreview);
 
 Vue.use(VMEditor);
 

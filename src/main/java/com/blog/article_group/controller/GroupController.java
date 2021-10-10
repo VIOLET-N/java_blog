@@ -45,4 +45,9 @@ public class GroupController {
     public int delete(ArticleGroup group){
         return service.delete(group);
     }
+
+    @RequestMapping("/group-and-article")
+    public ArticleGroup selectByIdAndAllArticle(ArticleGroup group){
+        return service.selectByIdAndAllArticle(group);
+    }
 }

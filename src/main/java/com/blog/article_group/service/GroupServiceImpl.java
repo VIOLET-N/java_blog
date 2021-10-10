@@ -39,4 +39,9 @@ public class GroupServiceImpl implements GroupService {
     public int delete(ArticleGroup group) {
         return dao.delete(group);
     }
+
+    @Override
+    public ArticleGroup selectByIdAndAllArticle(ArticleGroup group) {
+        return dao.selectByIdAndAllArticle(group);
+    }
 }

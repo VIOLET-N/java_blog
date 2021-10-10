@@ -9,19 +9,16 @@
 
     <resultMap id="selectIconAndLgg" type="com.blog.article_group.entity.ArticleGroup" autoMapping="true">
         <id property="articleGroupId" column="article_group_id" />
-        <association property="groupIcon" javaType="com.blog.group_icon.entity.GroupIcon" autoMapping="true">
-            <id property="iconId" column="icon_id"/>
-        </association>
         <association property="language" javaType="com.blog.language.entity.Language" autoMapping="true">
             <id property="lggId" column="lgg_id" />
         </association>
     </resultMap>
 
     <select id="selectAll" resultMap="selectIconAndLgg">
-        select article_group.*, gi.*, l.*
+        select article_group.*, l.*
         from article_group
-            inner join group_icon gi on article_group.icon_id = gi.icon_id
             inner join language l on article_group.lgg_id = l.lgg_id
+        order by article_group.create_time desc
     </select>
 
     <update id="update">
@@ -35,5 +32,20 @@
         delete from article_group where article_group_id=#{articleGroupId}
     </delete>
 
-<!--    selectByIdAndAllArticle-->
+<!--  selectByIdAndAllArticle  -->
+    <resultMap id="groupAndArticle" type="com.blog.article_group.entity.ArticleGroup" autoMapping="true">
+        <id property="articleGroupId" column="article_group_id" />
+        <collection property="articleList" ofType="com.blog.article.entity.Article" autoMapping="true">
+            <id property="articleId" column="article_id" />
+            <result property="title" column="a_title" />
+            <result property="createTime" column="a_c_time" />
+            <result property="updateTime" column="a_u_time" />
+        </collection>
+    </resultMap>
+    <select id="selectByIdAndAllArticle" resultMap="groupAndArticle">
+        select article_group.*, a.article_id, a.title a_title, a.create_time a_c_time, a.update_time a_u_time, a.article_state
+        from article_group
+            left join article a on article_group.article_group_id = a.group_id
+        where article_group.article_group_id = #{articleGroupId}
+    </select>
 </mapper>

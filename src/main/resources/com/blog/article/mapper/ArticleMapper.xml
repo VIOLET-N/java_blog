@@ -19,6 +19,7 @@
     <select id="selectById" resultMap="article_admin">
         select article.*, a.*
         from article inner join admin a on article.admin_id = a.admin_id
+        where article.article_id = #{articleId}
     </select>
 
     <select id="selectAllByAdminId" resultType="com.blog.article.entity.Article">

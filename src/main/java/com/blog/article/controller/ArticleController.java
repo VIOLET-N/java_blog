@@ -40,4 +40,10 @@ public class ArticleController {
     public List<Article> selectAllByAdminId(Article article){
         return service.selectAllByAdminId(article);
     }
+
+    @RequestMapping("/update")
+    public Article update(Article article){
+        return service.update(article);
+//        return article;
+    }
 }

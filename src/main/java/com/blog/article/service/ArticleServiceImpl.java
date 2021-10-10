@@ -31,4 +31,11 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> selectAllByAdminId(Article article) {
         return dao.selectAllByAdminId(article);
     }
+
+    @Override
+    public Article update(Article article) {
+        article.setUpdateTime(DateFormat.getNewDate());
+        dao.update(article);
+        return article;
+    }
 }
