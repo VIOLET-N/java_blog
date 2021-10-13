@@ -1,5 +1,6 @@
 package com.blog.article_group.service;
 
+import com.blog.article.entity.Article;
 import com.blog.article_group.entity.ArticleGroup;
 import com.blog.article_group.mapper.GroupMapper;
 import com.blog.utils.DateFormat;
@@ -43,5 +44,10 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public ArticleGroup selectByIdAndAllArticle(ArticleGroup group) {
         return dao.selectByIdAndAllArticle(group);
+    }
+
+    @Override
+    public Article selectFirstArticle(ArticleGroup group) {
+        return dao.selectFirstArticle(group);
     }
 }

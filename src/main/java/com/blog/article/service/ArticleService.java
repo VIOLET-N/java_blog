@@ -9,4 +9,5 @@ public interface ArticleService {
     public Article selectById(Article article);
     public List<Article> selectAllByAdminId(Article article);
     public Article update(Article article);
+    public List<Article> selectAll();
 }

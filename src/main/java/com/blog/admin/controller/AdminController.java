@@ -3,8 +3,20 @@ package com.blog.admin.controller;
 import com.blog.admin.entity.Admin;
 import com.blog.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/admin-manager")
@@ -22,22 +34,29 @@ public class AdminController {
     @RequestMapping("/register")
     public Admin create(Admin admin){
         service.createAdmin(admin);
-        return service.selectById(admin.getAdminId());
+        return admin;
     }
 
-    /**
-     * 登录
-     * 要求:
-     *   登录失败 -> 判断是 username 错误还是 password 错误
-     *   登录成功 -> 返回 admin 对象给前台
-     * 实现该接口
-     * @param admin 登录时输入的用户名和密码
-     * @return admin 对象
-     */
     @RequestMapping("/login")
-    public Admin login(Admin admin){
+    public Admin EmailPwd(Admin admin){
 
+        return service.selectByEmail(admin);
+//        return null;
+    }
 
-        return null;
+    @RequestMapping("/select-id")
+    public Admin SelectById(Admin admin){
+        return service.selectById(admin);
+    }
+
+    @RequestMapping("/register-i")
+    public Admin registerAdmin(Admin admin){
+        System.out.println(admin);
+        service.registerAdmin(admin);
+        System.out.println(admin.getAdminId());
+        if (admin.getAdminId() == null){
+            return null;
+        }
+        return admin;
     }
 }

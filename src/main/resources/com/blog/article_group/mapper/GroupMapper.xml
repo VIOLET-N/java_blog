@@ -48,4 +48,8 @@
             left join article a on article_group.article_group_id = a.group_id
         where article_group.article_group_id = #{articleGroupId}
     </select>
+
+    <select id="selectFirstArticle" resultType="com.blog.article.entity.Article">
+        select * from article where group_id=#{articleGroupId} limit 0,1;
+    </select>
 </mapper>

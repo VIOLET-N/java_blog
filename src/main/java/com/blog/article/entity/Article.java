@@ -19,6 +19,7 @@ public class Article {
     private ArticleState articleState;  // 状态: 草稿, 发布, 删除
     private String createTime;           // 创建时间
     private String updateTime;          // 修改时间
+    private String imgUrl;              //
     private Integer adminId;            // 作者 Id
     private Integer groupId;            // 组 Id
 

@@ -50,4 +50,9 @@ public class GroupController {
     public ArticleGroup selectByIdAndAllArticle(ArticleGroup group){
         return service.selectByIdAndAllArticle(group);
     }
+
+    @RequestMapping("/group-a-f")
+    public Article selectFirstArticle(ArticleGroup group){
+        return service.selectFirstArticle(group);
+    }
 }

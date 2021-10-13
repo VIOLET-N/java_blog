@@ -14,7 +14,11 @@ import lombok.NoArgsConstructor;
 public class Admin {
     private Integer adminId;
     private String username;
-    private String password;
-    private String avatar;
+    private String avatarUrl;
     private PowerState power;
+    private Integer githubId;
+    private String url;
+    private String nodeId;
+    private String email;
+    private String password;
 }

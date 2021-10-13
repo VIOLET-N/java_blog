@@ -8,6 +8,9 @@ import CreateGroup from '../views/article/CreateGroup.vue'
 import Writing from '../views/article/Writing.vue'
 import ProjectList from '../views/article/ProjectList.vue'
 import Search from '../views/Search.vue'
+import GetUserInfo from '../views/login/GetUserInfo.vue'
+import Login from '../views/login/LoginIndex.vue'
+import Register from '../views/login/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -54,10 +57,26 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/get-user',
+    name: 'GetUserInfo',
+    component: GetUserInfo
+  },
+  {
+    path: '/login',
+    name: 'LoginIndex',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  }
 ]
 
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes: routes
 })
 
 export default router

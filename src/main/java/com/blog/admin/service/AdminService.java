@@ -9,8 +9,10 @@ import com.blog.admin.entity.Admin;
  */
 public interface AdminService {
     public int createAdmin(Admin admin);
+    public void registerAdmin(Admin admin);
     public Admin selectById(Admin admin);
     public Admin selectById(int id);
     public Admin login(Admin admin);
     public int delete(Admin admin);
+    public Admin selectByEmail(Admin admin);
 }

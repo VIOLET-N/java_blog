@@ -24,14 +24,14 @@
               </div>
               
             </li>
-            <li class="b-button">
+            <li class="b-button" v-if="false">
               <div class="button-content">
                 <i class="fa fa-laptop" aria-hidden="true"></i>
                 <router-link to="/language">Language</router-link>
               </div>
 
             </li>
-            <li class="b-button">
+            <li class="b-button" v-if="false">
               <div class="button-content">
                 <i class="fa fa-link" aria-hidden="true"></i>
                 <router-link to="/">Link</router-link>
@@ -45,29 +45,43 @@
               </div>
 
             </li>
-            <li class="b-button">
+            <li class="b-button" v-if="false">
               <div class="button-content">
                 <i class="fa fa-github" aria-hidden="true"></i>
                 <router-link to="/">GitHub</router-link>
               </div>
             </li>
+            <li class="b-button" v-if="!isLogin">
+              <div class="button-content">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <router-link to="/login">Login</router-link>
+              </div>
+            </li>
           </ul>
-          <div class="userInfo">
+          <div class="userInfo" v-if="isLogin">
             <div class="icon">
-              <img src="../assets/005.jpg" alt="">
+              <img :src="admin.avatarUrl" alt="">
               <ul class="menu-ul">
                 <li></li>
-                <li class="menu-li">
+                <li class="menu-li"  v-if="isAdmin">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   Writing
                 </li>
-                <li @click="addProject" class="menu-li">
+                <li @click="addProject" class="menu-li"  v-if="isAdmin">
                   <i class="fa fa-plus" aria-hidden="true"></i> 
                   Add Project
                 </li>
-                <li class="menu-li">
+                <li class="menu-li"  v-if="isAdmin">
                   <i class="fa fa-cog" aria-hidden="true"></i>
                   Setting
+                </li>
+                <li class="menu-li">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  UserInfo
+                </li>
+                <li class="menu-li" @click="logout">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Logout
                 </li>
               </ul>
             </div>
@@ -82,9 +96,31 @@
 
   export default {
     name: "Home",
+    data(){
+      return{
+        admin: "",
+        isLogin: false,
+        isAdmin: false
+      }
+    },
     methods: {
       addProject(){
         this.$router.push("/add-project");
+      },
+      logout(){
+        sessionStorage.setItem("user", null);
+        this.$router.push("/login");
+        // location.reload();
+      }
+    },
+    mounted(){
+      let user = sessionStorage.getItem("user");
+      if(user != null){
+        this.isLogin = true;
+        this.admin = JSON.parse(user);
+        if(this.admin.power === "ADMIN"){
+          this.isAdmin = true;
+        }
       }
     }
   };
@@ -248,7 +284,7 @@
   list-style: none;
   /* background: violet; */
   /* top: -20px; */
-  margin-top: -62px;
+  margin-top: -63px;
 
 }
 

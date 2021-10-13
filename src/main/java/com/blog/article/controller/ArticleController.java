@@ -46,4 +46,9 @@ public class ArticleController {
         return service.update(article);
 //        return article;
     }
+
+    @RequestMapping("/select-all")
+    public List<Article> selectAll(){
+        return service.selectAll();
+    }
 }

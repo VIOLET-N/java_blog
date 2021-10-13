@@ -60,6 +60,10 @@ import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/
 import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn';
 import '@kangc/v-md-editor/lib/plugins/mermaid/mermaid.css';
 
+// element-ui
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
 VMEditor.Codemirror = Codemirror;
 
 VMEditor.use(createCopyCodePlugin());
@@ -78,6 +82,7 @@ Vue.use(VMPreview);
 
 Vue.use(VMEditor);
 
+Vue.use(ElementUI);
 // 图片裁剪组件
 import VueCropper from 'vue-cropper'
 

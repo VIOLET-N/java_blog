@@ -38,4 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
         dao.update(article);
         return article;
     }
+
+    @Override
+    public List<Article> selectAll() {
+        return dao.selectAll();
+    }
 }

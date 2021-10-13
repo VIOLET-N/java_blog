@@ -12,6 +12,7 @@
     "babel-plugin-prismjs": "^2.1.0",
     "codemirror": "^5.63.1",
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.6",
     "font-awesome": "^4.7.0",
     "jsonlint": "^1.6.3",
     "prismjs": "^1.25.0",

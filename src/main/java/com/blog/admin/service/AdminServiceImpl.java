@@ -23,6 +23,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public void registerAdmin(Admin admin) {
+        admin.setPower(PowerState.USER);
+        dao.registerAdmin(admin);
+    }
+
+    @Override
     public Admin selectById(Admin admin) {
 
         return dao.selectById(admin);
@@ -43,5 +49,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int delete(Admin admin) {
         return dao.delete(admin);
+    }
+
+    @Override
+    public Admin selectByEmail(Admin admin) {
+
+        return dao.selectByEmail(admin);
     }
 }

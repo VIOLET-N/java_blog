@@ -15,7 +15,9 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
     public int createAdmin(Admin admin);
+    public void registerAdmin(Admin admin);
     public Admin selectById(Admin admin);
     public Admin login(Admin admin);
     public int delete(Admin admin);
+    public Admin selectByEmail(Admin admin);
 }
