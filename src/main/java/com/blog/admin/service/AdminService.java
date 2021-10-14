@@ -15,4 +15,5 @@ public interface AdminService {
     public Admin login(Admin admin);
     public int delete(Admin admin);
     public Admin selectByEmail(Admin admin);
+    public int updateInfo(Admin admin);
 }

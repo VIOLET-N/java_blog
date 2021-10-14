@@ -28,4 +28,32 @@
     <select id="selectByEmail" resultType="com.blog.admin.entity.Admin">
         select * from admin where email=#{email} and password=#{password}
     </select>
+
+    <update id="updateInfo" >
+        update admin
+        <set>
+            <if test="username != '' and username != null">
+                username=#{username},
+            </if>
+            <if test="avatarUrl != '' and avatarUrl != null">
+                avatar_url=#{avatarUrl},
+            </if>
+            <if test="email != '' and email != null">
+                email=#{email},
+            </if>
+            <if test="password != '' and password != null">
+                password=#{password},
+            </if>
+            <if test="githubId != '' and githubId != null">
+                github_id=#{githubId},
+            </if>
+            <if test="url != '' and url != null">
+                url=#{url},
+            </if>
+            <if test="nodeId != '' and nodeId != null">
+                node_id=#{nodeId},
+            </if>
+        </set>
+        where admin_id=#{adminId};
+    </update>
 </mapper>

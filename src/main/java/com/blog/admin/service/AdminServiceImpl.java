@@ -56,4 +56,9 @@ public class AdminServiceImpl implements AdminService {
 
         return dao.selectByEmail(admin);
     }
+
+    @Override
+    public int updateInfo(Admin admin) {
+        return dao.updateInfo(admin);
+    }
 }

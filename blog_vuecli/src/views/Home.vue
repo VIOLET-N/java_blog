@@ -75,7 +75,7 @@
                   <i class="fa fa-cog" aria-hidden="true"></i>
                   Setting
                 </li>
-                <li class="menu-li">
+                <li class="menu-li" @click="toUserInfo">
                   <i class="fa fa-user" aria-hidden="true"></i>
                   UserInfo
                 </li>
@@ -111,6 +111,9 @@
         sessionStorage.setItem("user", null);
         this.$router.push("/login");
         // location.reload();
+      },
+      toUserInfo(){
+        this.$router.push("/user-info");
       }
     },
     mounted(){

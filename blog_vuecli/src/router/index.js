@@ -11,6 +11,7 @@ import Search from '../views/Search.vue'
 import GetUserInfo from '../views/login/GetUserInfo.vue'
 import Login from '../views/login/LoginIndex.vue'
 import Register from '../views/login/Register.vue'
+import UserInfo from '../views/login/UserInfo.vue'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,11 @@ const routes = [
         path: '/search',
         name: 'Search',
         component: Search
+      },
+      {
+        path: '/user-info',
+        name: "UserInfo",
+        component: UserInfo
       }
     ]
   },

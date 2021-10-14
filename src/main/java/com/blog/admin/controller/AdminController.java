@@ -59,4 +59,9 @@ public class AdminController {
         }
         return admin;
     }
+
+    @RequestMapping("/up-info")
+    public int updateInfo(Admin admin){
+        return service.updateInfo(admin);
+    }
 }
