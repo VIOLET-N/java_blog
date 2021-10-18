@@ -41,7 +41,7 @@
             <li class="b-button">
               <div class="button-content">
                 <i class="fa fa-heart" aria-hidden="true"></i>
-                <router-link to="/">About</router-link>
+                <router-link to="/about">About</router-link>
               </div>
 
             </li>
@@ -71,7 +71,7 @@
                   <i class="fa fa-plus" aria-hidden="true"></i> 
                   Add Project
                 </li>
-                <li class="menu-li"  v-if="isAdmin">
+                <li class="menu-li"  v-if="isAdmin" @click="toSetting">
                   <i class="fa fa-cog" aria-hidden="true"></i>
                   Setting
                 </li>
@@ -114,6 +114,9 @@
       },
       toUserInfo(){
         this.$router.push("/user-info");
+      },
+      toSetting(){
+        this.$router.push("/setting");
       }
     },
     mounted(){

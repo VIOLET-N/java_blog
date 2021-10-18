@@ -14,4 +14,5 @@ public interface GroupMapper {
     public int delete(ArticleGroup group);
     public ArticleGroup selectByIdAndAllArticle(ArticleGroup group);
     public Article selectFirstArticle(ArticleGroup group); // 通过group id查询
+    public int selectNum(); // 查询总条数
 }

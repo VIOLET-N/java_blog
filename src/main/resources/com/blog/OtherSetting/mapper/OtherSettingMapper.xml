@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.OtherSetting.mapper.OtherSettingMapper">
+    <update id="update" >
+        update admin_setting
+        set index_list = #{indexList},
+            placard = #{placard},
+            signature = #{signature},
+            about_me = #{aboutMe}
+        where id=1;
+    </update>
+
+    <select id="select" resultType="com.blog.OtherSetting.entity.AdminSetting">
+        select *
+        from admin_setting where id=1;
+    </select>
+
+    <select id="indexData" resultType="com.blog.OtherSetting.entity.AdminSetting">
+        select index_list, signature, placard
+        from admin_setting where id=1;
+    </select>
+
+    <select id="aboutMe" resultType="com.blog.OtherSetting.entity.AdminSetting">
+        select about_me
+        from admin_setting where id=1;
+    </select>
+</mapper>

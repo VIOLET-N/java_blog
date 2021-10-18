@@ -12,6 +12,8 @@ import GetUserInfo from '../views/login/GetUserInfo.vue'
 import Login from '../views/login/LoginIndex.vue'
 import Register from '../views/login/Register.vue'
 import UserInfo from '../views/login/UserInfo.vue'
+import About from '../views/About.vue'
+import Setting from '../views/Setting.vue'
 
 Vue.use(VueRouter)
 
@@ -60,6 +62,16 @@ const routes = [
         path: '/user-info',
         name: "UserInfo",
         component: UserInfo
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: About
+      },
+      {
+        path: "/setting",
+        name: 'Setting',
+        component: Setting
       }
     ]
   },

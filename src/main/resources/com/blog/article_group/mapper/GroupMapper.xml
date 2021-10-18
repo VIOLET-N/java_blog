@@ -52,4 +52,9 @@
     <select id="selectFirstArticle" resultType="com.blog.article.entity.Article">
         select * from article where group_id=#{articleGroupId} limit 0,1;
     </select>
+
+    <select id="selectNum" resultType="int">
+        select count(article_group_id)
+        from article_group
+    </select>
 </mapper>

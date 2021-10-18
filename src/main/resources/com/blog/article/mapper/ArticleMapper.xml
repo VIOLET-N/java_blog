@@ -46,4 +46,9 @@
         from article
         order by create_time desc
     </select>
+
+    <select id="selectNum" resultType="int" >
+        select count(article_id)
+        from article
+    </select>
 </mapper>

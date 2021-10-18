@@ -13,4 +13,5 @@ public interface ArticleMapper {
     public int update(Article article); // 更新文章,返回 Id
     public int deleteById(Article article);
     public List<Article> selectAll();  // 查询所有文章倒序
+    public int selectNum(); // 查询总条数
 }
