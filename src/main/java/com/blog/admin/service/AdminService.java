@@ -16,4 +16,6 @@ public interface AdminService {
     public int delete(Admin admin);
     public Admin selectByEmail(Admin admin);
     public int updateInfo(Admin admin);
+    public Admin selectGithub(Admin admin);
+    public void createAdminGithub(Admin admin);
 }

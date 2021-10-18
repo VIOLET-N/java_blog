@@ -3,20 +3,7 @@ package com.blog.admin.controller;
 import com.blog.admin.entity.Admin;
 import com.blog.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/admin-manager")
@@ -63,5 +50,16 @@ public class AdminController {
     @RequestMapping("/up-info")
     public int updateInfo(Admin admin){
         return service.updateInfo(admin);
+    }
+
+    @RequestMapping("/slt-ghb")
+    public Admin selectGithub(Admin admin){
+        return service.selectGithub(admin);
+    }
+
+    @RequestMapping("/create-ghb")
+    public Admin createAdminGithub(Admin admin){
+        service.createAdminGithub(admin);
+        return admin;
     }
 }

@@ -21,4 +21,6 @@ public interface AdminMapper {
     public int delete(Admin admin);
     public Admin selectByEmail(Admin admin);
     public int updateInfo(Admin admin);
+    public Admin selectGithub(Admin admin); // 通过github信息获取 admin
+    public void createAdminGithub(Admin admin); // 通过 github 信息创建用户
 }

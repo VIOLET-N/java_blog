@@ -61,4 +61,15 @@ public class AdminServiceImpl implements AdminService {
     public int updateInfo(Admin admin) {
         return dao.updateInfo(admin);
     }
+
+    @Override
+    public Admin selectGithub(Admin admin) {
+        return dao.selectGithub(admin);
+    }
+
+    @Override
+    public void createAdminGithub(Admin admin) {
+        admin.setPower(PowerState.USER);
+        dao.createAdminGithub(admin);
+    }
 }

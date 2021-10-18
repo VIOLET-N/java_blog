@@ -56,4 +56,15 @@
         </set>
         where admin_id=#{adminId};
     </update>
+
+    <select id="selectGithub" resultType="com.blog.admin.entity.Admin">
+        select *
+        from admin where github_id=#{githubId} and node_id=#{nodeId};
+    </select>
+
+    <insert id="createAdminGithub" keyProperty="adminId" useGeneratedKeys="true">
+        insert into admin (username, node_id, avatar_url, url, github_id, power)
+        values (#{username}, #{nodeId}, #{avatarUrl}, #{url}, #{githubId}, #{power});
+    </insert>
+
 </mapper>
